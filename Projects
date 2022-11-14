@@ -1,0 +1,28 @@
+input_select:
+  dehumidifier_fan_mode:
+    name: "Fan Mode"
+    options:
+      - Silent
+      - Medium
+      - High
+    icon: "mdi:animation-outline"
+  dehumidifier_modes:
+    name: "Modes"
+    options:
+      - Target_humidity
+      - Continuos
+      - Smart
+      - Dryer
+    icon: "mdi:animation-outline"
+
+sensor:
+  - platform: template
+    sensors:
+      midea_current_humidity:
+        friendly_name: "midea_current_humidity"
+        value_template: "{{ state_attr('humidifier.midea_dehumidifier_f086cfa69227452c862c888bf7425f636d33d46cfa4344fb9d7f20f7436b389b, 'current_humidity') }}"
+        unit_of_measurement: "%"
+      midea_target_humidity:
+        friendly_name: "midea_target_humidity"
+        value_template: "{{ state_attr('humidifier.midea_dehumidifier_f086cfa69227452c862c888bf7425f636d33d46cfa4344fb9d7f20f7436b389b, 'humidity') }}"
+        unit_of_measurement: "%"
